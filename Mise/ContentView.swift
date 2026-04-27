@@ -12,7 +12,7 @@ struct ContentView: View {
         VStack {
             Image(systemName: "applelogo")
                 .frame(width: 100, height: 100)
-                .background(Color.gray)
+                .background(Color.blue)
                 .cornerRadius(50)
                 .imageScale(.large)
                 .scaledToFill()
