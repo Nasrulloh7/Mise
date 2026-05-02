@@ -1,0 +1,547 @@
+{
+  "activityEntities" : [
+    "experimentCreated",
+    [
+      {
+        "createdDate" : "2026-05-02T00:04:45Z",
+        "event" : "experimentCreated",
+        "id" : "0108E793-2CFA-43C4-A642-7FBF2329776F",
+        "subtitle" : "mise-detector 1",
+        "title" : "Model Source Created"
+      }
+    ],
+    "trainingDataAdded",
+    [
+      {
+        "createdDate" : "2026-05-02T00:05:00Z",
+        "event" : "trainingDataAdded",
+        "id" : "7F1F1B4D-F146-459F-8F6E-B0593747C959",
+        "subtitle" : "train",
+        "title" : "Training Data Added"
+      }
+    ],
+    "trainingStarted",
+    [
+      {
+        "createdDate" : "2026-05-02T00:05:19Z",
+        "event" : "trainingStarted",
+        "id" : "D55AFDE5-8D4B-4906-81ED-F52F9AE5B332",
+        "subtitle" : "1.000 iterations",
+        "title" : "Training Started"
+      }
+    ],
+    "snapshotCreated",
+    [
+      {
+        "createdDate" : "2026-05-02T00:05:40Z",
+        "event" : "snapshotCreated",
+        "id" : "5A22D0A6-742B-4151-87A0-B334F053D77D",
+        "subtitle" : "Snapshot created at iteration 10",
+        "title" : "Snapshot Saved"
+      }
+    ]
+  ],
+  "contentDataResult" : {
+    "createdDate" : "2026-05-02T00:05:00Z"
+  },
+  "createdDate" : "2026-05-02T00:07:04Z",
+  "evaluationContainerEntity" : {
+    "createdDate" : "2026-05-02T00:07:04Z",
+    "evaluationEntities" : [
+
+    ],
+    "id" : "9d2f30c7-a058-41e8-b4d4-8eb916d81e0d",
+    "modifiedDate" : "2026-05-02T00:07:04Z",
+    "previewType" : "objectDetector",
+    "testingEvaluationEntity" : {
+      "analysedDataType" : "none",
+      "createdDate" : "2026-05-02T00:07:04Z",
+      "dataResult" : {
+        "createdDate" : "2026-05-02T00:07:04Z"
+      },
+      "id" : "2f83e7f3-70ca-462a-8104-e9e0f34be306"
+    },
+    "trainingEvaluationEntity" : {
+      "analysedDataType" : "none",
+      "createdDate" : "2026-05-02T00:07:04Z",
+      "dataResult" : {
+        "createdDate" : "2026-05-02T00:07:04Z",
+        "dataSourceID" : "9A7ED723-20CB-47C4-9021-326F3D8F811C",
+        "dataURL" : "file:///Users/kezia/Documents/Apple%20Developer%20Academy/Challenge%202/All%20dataset/test_1/train/"
+      },
+      "dataSourceID" : "9A7ED723-20CB-47C4-9021-326F3D8F811C",
+      "id" : "3dc08c0a-304f-47b9-92f6-6a362d3deb1f"
+    },
+    "validationEvaluationEntity" : {
+      "analysedDataType" : "auto",
+      "createdDate" : "2026-05-02T00:07:04Z",
+      "dataResult" : {
+        "createdDate" : "2026-05-02T00:07:04Z"
+      },
+      "id" : "629126b8-d8b1-4b5d-b119-eeeca3b49966"
+    }
+  },
+  "evaluationEntity" : {
+    "analysedDataType" : "none",
+    "dataResult" : {
+
+    },
+    "id" : "9e8f5363-575f-44fe-b387-0e8cef49624b"
+  },
+  "evaluationState" : "uninitialized",
+  "id" : "37040860-C4E4-43FD-A42B-7EB8A4793F93",
+  "modelEntity" : {
+    "createdDate" : "2026-05-02T00:07:04Z",
+    "experimentID" : "901052B7-A6A7-4684-AD95-7FE9E6AC8A7C",
+    "id" : "A47C9AAC-A4F7-4DBF-ABB0-290ECBE0B591",
+    "modelURL" : "Snapshots/Mise-detector%201%20Iteration%20100.mlmodel",
+    "modifiedDate" : "2026-05-02T00:07:04Z",
+    "title" : "",
+    "version" : "1.0"
+  },
+  "modifiedDate" : "2026-05-02T00:07:04Z",
+  "preferredFilename" : "Mise-detector 1 Iteration 100",
+  "settingEntity" : {
+    "algorithmType" : "maxEnt",
+    "augmentations" : [
+
+    ],
+    "featureNames" : [
+
+    ],
+    "handActionClassifierAugmentations" : [
+
+    ],
+    "handPoseClassifierAugmentations" : [
+
+    ],
+    "harVideoAugmentations" : 0,
+    "iterationCount" : 1000,
+    "odAlgorithmType" : "darknetYolo",
+    "odBatchSize" : 32,
+    "odGridHeight" : 13,
+    "odGridWidth" : 13,
+    "recommendedIterationCount" : 10000,
+    "seedType" : "default",
+    "styleTransferAlgorithmType" : "image",
+    "taskType" : "objectDetector",
+    "transferLearningEmbeddingType" : "dynamic"
+  },
+  "snapshotRole" : {
+    "snapshotIteration" : 100,
+    "snapshotParent" : "901052B7-A6A7-4684-AD95-7FE9E6AC8A7C"
+  },
+  "state" : "trained",
+  "title" : "Iteration 100",
+  "trainingEntity" : {
+    "analysedDataType" : "datasource",
+    "checkpointMetrics" : {
+      "10" : {
+        "createdDate" : "2026-05-02T00:05:31Z",
+        "iteration" : 10,
+        "metrics" : {
+          "loss" : 8.012043952941895
+        }
+      },
+      "100" : {
+        "createdDate" : "2026-05-02T00:06:57Z",
+        "iteration" : 100,
+        "metrics" : {
+          "loss" : 3.3941280841827393
+        }
+      },
+      "20" : {
+        "createdDate" : "2026-05-02T00:05:41Z",
+        "iteration" : 20,
+        "metrics" : {
+          "loss" : 7.465761184692383
+        }
+      },
+      "30" : {
+        "createdDate" : "2026-05-02T00:05:50Z",
+        "iteration" : 30,
+        "metrics" : {
+          "loss" : 6.479879856109619
+        }
+      },
+      "40" : {
+        "createdDate" : "2026-05-02T00:06:00Z",
+        "iteration" : 40,
+        "metrics" : {
+          "loss" : 5.613167762756348
+        }
+      },
+      "50" : {
+        "createdDate" : "2026-05-02T00:06:09Z",
+        "iteration" : 50,
+        "metrics" : {
+          "loss" : 5.072269916534424
+        }
+      },
+      "60" : {
+        "createdDate" : "2026-05-02T00:06:19Z",
+        "iteration" : 60,
+        "metrics" : {
+          "loss" : 4.609585285186768
+        }
+      },
+      "70" : {
+        "createdDate" : "2026-05-02T00:06:28Z",
+        "iteration" : 70,
+        "metrics" : {
+          "loss" : 4.198209762573242
+        }
+      },
+      "80" : {
+        "createdDate" : "2026-05-02T00:06:38Z",
+        "iteration" : 80,
+        "metrics" : {
+          "loss" : 3.8940582275390625
+        }
+      },
+      "90" : {
+        "createdDate" : "2026-05-02T00:06:48Z",
+        "iteration" : 90,
+        "metrics" : {
+          "loss" : 3.6554059982299805
+        }
+      }
+    },
+    "dataResult" : {
+      "classesCount" : 1,
+      "createdDate" : "2026-05-02T00:07:04Z",
+      "dataAnalysis" : {
+        "classifierAnalysis" : {
+
+        },
+        "issues" : [
+          {
+            "description" : "1 classes found, including bowl",
+            "severity" : "debug"
+          },
+          {
+            "description" : "993 annotations found, automatically creating validation set",
+            "severity" : "good"
+          },
+          {
+            "description" : "Smallest class is \"bowl\" with 993 images",
+            "severity" : "debug"
+          },
+          {
+            "description" : "Largest class is \"bowl\" with 993 images",
+            "severity" : "debug"
+          }
+        ],
+        "objectDetectorAnalysis" : {
+          "details" : {
+
+          },
+          "labelStats" : {
+            "bowl" : 993
+          }
+        },
+        "summary" : {
+          "canUseValidation" : 1,
+          "classCount" : 1,
+          "counterExamples" : 0,
+          "sampleCount" : 242,
+          "suggestedMaxIterations" : 10000
+        }
+      },
+      "dataSourceID" : "9A7ED723-20CB-47C4-9021-326F3D8F811C",
+      "dataURL" : "file:///Users/kezia/Documents/Apple%20Developer%20Academy/Challenge%202/All%20dataset/test_1/train/",
+      "itemsCount" : 242
+    },
+    "dataSourceID" : "9A7ED723-20CB-47C4-9021-326F3D8F811C",
+    "featureExtractionCheckpointMayBeAvailable" : false,
+    "progress" : [
+      {
+        "count" : 5,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 6.45831298828125,
+          "iterationCount" : 5,
+          "loss" : 8.2717866897583
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 10,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 10,
+          "loss" : 8.012043952941895
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 15,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 16.17796504497528,
+          "iterationCount" : 15,
+          "loss" : 8.048629760742188
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 20,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 20,
+          "loss" : 7.465761184692383
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 25,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 25.753785967826843,
+          "iterationCount" : 25,
+          "loss" : 7.108819961547852
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 30,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 30,
+          "loss" : 6.479879856109619
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 35,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 35.267783999443054,
+          "iterationCount" : 35,
+          "loss" : 5.994917869567871
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 40,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 40,
+          "loss" : 5.613167762756348
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 45,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 44.8333580493927,
+          "iterationCount" : 45,
+          "loss" : 5.201389789581299
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 50,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 50,
+          "loss" : 5.072269916534424
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 55,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 54.45727598667145,
+          "iterationCount" : 55,
+          "loss" : 4.769959926605225
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 60,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 60,
+          "loss" : 4.609585285186768
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 65,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 64.03399407863617,
+          "iterationCount" : 65,
+          "loss" : 4.416161060333252
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 70,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 70,
+          "loss" : 4.198209762573242
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 75,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 73.5938310623169,
+          "iterationCount" : 75,
+          "loss" : 4.000052452087402
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 80,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 80,
+          "loss" : 3.8940582275390625
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 85,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 83.11396408081055,
+          "iterationCount" : 85,
+          "loss" : 3.7710304260253906
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 90,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 90,
+          "loss" : 3.6554059982299805
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 95,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 92.71169006824493,
+          "iterationCount" : 95,
+          "loss" : 3.4816932678222656
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      },
+      {
+        "count" : 100,
+        "currentRowIndex" : 0,
+        "isLast" : false,
+        "odColumnHeader" : {
+          "elapsedTime" : 0,
+          "iterationCount" : 100,
+          "loss" : 3.3941280841827393
+        },
+        "percentComplete" : 0,
+        "tableDone" : false,
+        "tableIndex" : 0
+      }
+    ],
+    "resumableCheckpoint" : {
+      "checkpointURL" : "file:///Users/kezia/Library/Caches/com.apple.dt.createml/projects/3C71F316-2ECD-44D3-95EC-6BE1D0666C17ee691c8b2bdd495b90a0835dc5c768171c71861c/sessions/checkpoint.sessions/901052B7-A6A7-4684-AD95-7FE9E6AC8A7C/training-000000100.checkpoint",
+      "createdDate" : "2026-05-02T00:06:57Z",
+      "iteration" : 100
+    },
+    "snapshottableCheckpoints" : {
+      "100" : {
+        "createdDate" : "2026-05-02T00:06:57Z",
+        "iteration" : 100,
+        "modelURL" : "file:///Users/kezia/Library/Caches/com.apple.dt.createml/projects/3C71F316-2ECD-44D3-95EC-6BE1D0666C17ee691c8b2bdd495b90a0835dc5c768171c71861c/sessions/checkpoint.sessions/901052B7-A6A7-4684-AD95-7FE9E6AC8A7C/training-000000100.checkpoint.model/checkpointModel.mlmodel"
+      }
+    },
+    "startTime" : "2026-05-02T00:05:19Z"
+  },
+  "validationEntity" : {
+    "analysedDataType" : "auto",
+    "dataResult" : {
+      "createdDate" : "2026-05-02T00:07:04Z"
+    },
+    "splitOptions" : {
+      "strategy" : {
+        "automatic" : {
+
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
