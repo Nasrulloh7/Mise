@@ -256,8 +256,9 @@
 				DEVELOPMENT_TEAM = 54B9GW8776;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access your photos";
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This allows the app to capture photos directly from your device";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This allows the app to save images and access your library when needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -290,8 +291,9 @@
 				DEVELOPMENT_TEAM = 54B9GW8776;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access your photos";
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This allows the app to capture photos directly from your device";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This allows the app to save images and access your library when needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
