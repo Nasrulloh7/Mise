@@ -10,39 +10,8 @@ import Photos
 
 enum OnboardingStep: Equatable {
     case splash
-    case requestCamera
-    case requestPhotos
-    case deniedCamera
-    case deniedPhotos
     case complete
-}
-
-// Access Denied: Camera and Photos
-enum PermissionType {
-    case camera, photos
-
-    var deniedTitle: String {
-        switch self {
-        case .camera: return "Camera Access Required"
-        case .photos: return "Photos Access Required"
-        }
-    }
-
-    var deniedDescription: String {
-        switch self {
-        case .camera:
-            return "We use your camera to analyze your scene and suggest better compositions. Please enable access to continue."
-        case .photos:
-            return "We use your photos to store your captures and keep your content organized. Please enable access to continue."
-        }
-    }
-
-    var sfSymbol: String {
-        switch self {
-        case .camera: return "camera"
-        case .photos: return "photo"
-        }
-    }
+    case camera
 }
 
 // MARK: Splash Screen
@@ -83,7 +52,7 @@ struct MiseLogoView: View {
     var diameter: CGFloat = 211
 
     var body: some View {
-        Image("mise_logo")
+        Image("Logo Mise App")
             .resizable()
             .scaledToFit()
             .frame(width: diameter, height: diameter)
@@ -306,45 +275,15 @@ struct OnboardingView: View {
         switch step {
  
         case .splash:
-            SplashView(onStart: { navigate(to: .requestCamera) })
+            SplashView(onStart: { navigate(to: .complete) })
                 .transition(.opacity)
  
-        case .requestCamera:
-            AccessPermissionView(
-                permissionType: .camera,
-                onGranted: { navigate(to: .requestPhotos) },
-                onDenied:  { navigate(to: .deniedCamera) }
-            )
-            .transition(.opacity)
- 
-        case .requestPhotos:
-            AccessPermissionView(
-                permissionType: .photos,
-                onGranted: { navigate(to: .complete) },
-                onDenied:  { navigate(to: .deniedPhotos) }
-            )
-            .transition(.opacity)
- 
-        case .deniedCamera:
-            PermissionDeniedView(
-                permissionType: .camera,
-                onGoToPermission: { navigate(to: .requestCamera) },
-                onExit: { navigate(to: .splash) },
-                onRetryAfterSettings: { navigate(to: .requestPhotos) }
-            )
-            .transition(.opacity)
- 
-        case .deniedPhotos:
-            PermissionDeniedView(
-                permissionType: .photos,
-                onGoToPermission: { navigate(to: .requestPhotos) },
-                onExit: { navigate(to: .splash) },
-                onRetryAfterSettings: { navigate(to: .complete) }
-            )
-            .transition(.opacity)
- 
         case .complete:
-            AllSetView(onCapture: { navigate(to: .splash) }) //change this to camera (next step)
+            AllSetView(onCapture: { navigate(to: .camera) }) //change this to camera (next step)
+                .transition(.opacity)
+
+        case .camera:
+            CameraView()
                 .transition(.opacity)
         }
     }
