@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct OverlayView: View {
+    
+    let count: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(count) object")
     }
 }
 
 #Preview {
-    OverlayView()
+    OverlayView(count: 1) // nanti ke update berdasarkan jumlah object yang kedetect
 }
