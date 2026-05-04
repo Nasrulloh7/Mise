@@ -121,10 +121,6 @@ struct AccessPermissionView: View {
                 
                 // access permission modal should pop up here
 
-                if isRequesting {
-                    ProgressView()
-                        .tint(.white.opacity(0.5))
-                }
             }
 
             Spacer()
@@ -364,7 +360,7 @@ struct OnboardingView: View {
         UIApplication.shared.open(url)
     }
 }
- 
+
 #Preview{
     OnboardingView()
 }
