@@ -10,10 +10,10 @@ import Vision
 import CoreML
 
 class ObjectDetection {
-    static func detectObject(from image: UIImage, completion: @escaping (Int) -> Void) { // nanti ganti parameter imagenya pakai hasil jepretan foto user
+    static func detectObject(from image: UIImage, completion: @escaping (Int, [CGRect]) -> Void) {
         
         guard let cgImage = image.cgImage else {
-            completion(0)
+            completion(0, [])
             return
         }
         
@@ -24,20 +24,21 @@ class ObjectDetection {
             let miseModel = try MiseDetectorModel(configuration: config)
             model = try VNCoreMLModel(for: miseModel.model)
         } catch {
-            completion(0)
+            completion(0, [])
             return
         }
         
         let request = VNCoreMLRequest(model: model) { (request, error) in
             guard let results = request.results as? [VNRecognizedObjectObservation] else {
-                completion(0)
+                completion(0, [])
                 return
             }
             
             let count = results.count
+            let boxes = results.map {$0.boundingBox}
             
             DispatchQueue.main.async {
-                completion(count)
+                completion(count, boxes)
             }
         }
         

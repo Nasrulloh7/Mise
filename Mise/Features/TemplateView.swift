@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct TemplateView: View {
+    let count: Int
+    let boxes: [CGRect]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Count: \(count)")
+        
+        OverlayView(boxes: boxes)
     }
 }
 
 #Preview {
-    TemplateView()
+    TemplateView(count: 1, boxes: [])
 }
