@@ -11,7 +11,16 @@ import SwiftUI
 struct MiseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                VStack(spacing: 20) {
+                    Text("Placeholder for the TemplateView while testing OverlayView")
+                        .font(.headline)
+                    
+                    NavigationLink(destination: OverlayView()) {
+                        Text("Open Camera with Overlay")
+                    }
+                }
+            }
         }
     }
 }
