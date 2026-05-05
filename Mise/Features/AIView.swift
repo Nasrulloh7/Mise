@@ -13,6 +13,7 @@ struct AIView: View {
     @State private var isProcessing: Bool = false
     @State private var navigate = false
     @State private var boundingBoxes: [CGRect] = []
+    @State private var isRotating: Bool = false
     
     let image: UIImage
     
@@ -33,6 +34,8 @@ struct AIView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 120, height: 120)
+                        .rotationEffect(.degrees(isRotating ? 360 : 0))
+                        .animation(.linear(duration: 3).repeatForever(autoreverses: false), value: isRotating)
                     
                     Text("Analyzing...")
                         .foregroundStyle(.white)
@@ -40,6 +43,7 @@ struct AIView: View {
                 }
             }
             .onAppear() {
+                isRotating = true
                 detectItem()
             }
             
@@ -66,7 +70,10 @@ struct AIView: View {
                 detectedObject = count
                 boundingBoxes = boxes
                 isProcessing = false
-                navigate = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    navigate = true
+                }
             }
         }
     }
