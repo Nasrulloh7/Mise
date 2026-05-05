@@ -24,7 +24,6 @@ struct PermissionIcon: View {
     VStack(spacing: 32) {
         PermissionIcon(systemName: "camera")
         PermissionIcon(systemName: "photo")
-        PermissionIcon(systemName: "checkmark.circle")
     }
     .padding()
     .background(Color.black)
