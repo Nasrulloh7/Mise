@@ -8,10 +8,16 @@
 import SwiftUI
 import AVFoundation
 
+import SwiftUI
+import AVFoundation
+
 struct CameraInOverlay: View {
     
     @StateObject private var camera = CameraManager()
     @State private var aiNavigation: Bool = false
+    
+    // 1. State variable to track the blink effect
+    @State private var isBlinking: Bool = false
     
     private var flashIcon: String {
         switch camera.flashMode {
@@ -26,10 +32,17 @@ struct CameraInOverlay: View {
         NavigationStack {
             ZStack {
                 Color.black.ignoresSafeArea()
+                
+                // Camera Feed Layer
                 CameraPreview(session: camera.session, cameraManager: camera)
                     .aspectRatio(3.0 / 4.0, contentMode: .fit)
                     .frame(maxWidth: .infinity)
                     .clipped()
+                
+                // 2. The Black Blink Layer (Sits right on top of the camera feed)
+                Color.black
+                    .opacity(isBlinking ? 1.0 : 0.0)
+                    .ignoresSafeArea()
                 
                 VStack {
                     Button {
@@ -44,7 +57,21 @@ struct CameraInOverlay: View {
                     Spacer()
                     
                     Button(action: {
+                        // 3. Trigger the Blink Animation
+                        withAnimation(.easeIn(duration: 0.05)) {
+                            isBlinking = true
+                        }
+                        
+                        // Immediately fade it back out after a split second
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            withAnimation(.easeOut(duration: 0.05)) {
+                                isBlinking = false
+                            }
+                        }
+                        
+                        // Tell the camera to capture the photo
                         camera.capturePhoto()
+                        
                     }) {
                         Circle()
                             .strokeBorder(.white, lineWidth: 3)
