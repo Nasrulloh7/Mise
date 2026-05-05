@@ -125,9 +125,9 @@ struct OnboardingView: View {
         let cameraStatus = AVCaptureDevice.authorizationStatus(for: .video)
         let photosStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
 
-        if cameraStatus == .denied || cameraStatus == .restricted || cameraStatus == .notDetermined {
+        if cameraStatus == .denied || cameraStatus == .restricted {
             navigate(to: .denied(.camera))
-        } else if photosStatus == .denied || photosStatus == .restricted || photosStatus == .notDetermined {
+        } else if photosStatus == .denied || photosStatus == .restricted {
             navigate(to: .denied(.photos))
         } else {
             navigate(to: .camera)
