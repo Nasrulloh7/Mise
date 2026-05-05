@@ -13,11 +13,14 @@ struct AIView: View {
     @State private var isProcessing: Bool = false
     @State private var navigate = false
     @State private var boundingBoxes: [CGRect] = []
+    @State private var isRotating: Bool = false
+    
+    let image: UIImage
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Image("testImage")
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
@@ -31,16 +34,19 @@ struct AIView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 120, height: 120)
+                        .rotationEffect(.degrees(isRotating ? 360 : 0))
+                        .animation(.linear(duration: 3).repeatForever(autoreverses: false), value: isRotating)
                     
                     Text("Analyzing...")
                         .foregroundStyle(.white)
                         .font(.headline)
-                    
-                    Button("Detect") {
-                        detectItem()
-                    }
                 }
             }
+            .onAppear() {
+                isRotating = true
+                detectItem()
+            }
+            
             .navigationDestination(isPresented: $navigate) {
                 destinationView()
             }
@@ -57,8 +63,6 @@ struct AIView: View {
     }
     
     func detectItem() {
-        guard let image = UIImage(named: "testImage") else { return }
-        
         isProcessing = true
         
         ObjectDetection.detectObject(from: image) { count, boxes in
@@ -66,12 +70,15 @@ struct AIView: View {
                 detectedObject = count
                 boundingBoxes = boxes
                 isProcessing = false
-                navigate = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    navigate = true
+                }
             }
         }
     }
 }
 
 #Preview {
-    AIView()
+    AIView(image: UIImage(systemName: "photo")!)
 }

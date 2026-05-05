@@ -91,3 +91,7 @@ struct OverlayView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
+#Preview {
+    OverlayView(count: 1, boxes: [])
+}
