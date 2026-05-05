@@ -60,8 +60,8 @@ struct CameraView: View {
                 }
             }
             
-            .onChange(of: camera.capturedImage) { newImage in
-                if newImage != nil {
+            .onChange(of: camera.capturedImage) { _ in
+                if camera.capturedImage != nil {
                     aiNavigation = true
                 }
             }
