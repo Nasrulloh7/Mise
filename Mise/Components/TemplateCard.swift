@@ -1,48 +1,32 @@
-//
-//  TemplateCard.swift
-//  Mise
-//
-//  Created by M Ilmi Nasrulloh on 02/05/26.
-//
-
 import SwiftUI
 
+// MARK: - Reusable Template Card Component
 struct TemplateCard: View {
     let entry: TemplateEntry
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-                Image(entry.imageName)
+        VStack(spacing: 12) {
+            Image(entry.imageName)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width : 169, height: 225)
-                .clipped()
+                .scaledToFit()
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                )
             
-            HStack{
-                Text(entry.title)
-                    .font(.body)
-                Spacer()
-                Image(systemName: "info.circle")
-            }
-            .foregroundColor(.white)
-            .shadow(radius: 10)
-            .padding(12)
-            .frame(width: 169, height: 54, alignment: .leading)
-            .glassEffect(.clear, in: .rect())
-            .shadow(radius: 10)
+            Text(entry.title)
+                .font(.headline)
+                .foregroundColor(.white)
         }
-        .cornerRadius(15)
-
-        
-        
-        
+        .padding(10)
+        .background(Color.white.opacity(0.05))
+        .cornerRadius(16)
     }
 }
 
-
 #Preview {
-    TemplateCard(entry: TemplateEntry(
-        title: "Rule of Thrids",
-        imageName: "image1",
-    ))
+    NavigationStack {
+        TemplateView(count: 2)
+    }
 }
