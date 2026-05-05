@@ -9,13 +9,13 @@ import SwiftUI
 
 struct OverlayView: View {
     
-    let count: Int
+    let boxes: [CGRect]
     
     var body: some View {
-        Text("\(count) object")
+        Text("Boxes: \(boxes.count)")
     }
 }
 
 #Preview {
-    OverlayView(count: 1) // nanti ke update berdasarkan jumlah object yang kedetect
+    OverlayView(boxes: [])
 }
