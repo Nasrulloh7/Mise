@@ -14,7 +14,7 @@ struct TemplateView: View {
     var body: some View {
         Text("Count: \(count)")
         
-        OverlayView()
+        OverlayView(selectedTemplate: nil)
     }
 }
 

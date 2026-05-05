@@ -9,31 +9,52 @@ import SwiftUI
 
 struct OverlayView: View {
     
-    let boxes: [CGRect] = []
-    
+    let selectedTemplate: TemplateEntry?
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
+            // 1. BASE LAYER: Camera feed
             CameraView()
 
+            // 2. TEMPLATE OUTLINES LAYER
+            if let template = selectedTemplate {
+                GeometryReader { geometry in
+                    
+                    let figmaToPointScale = geometry.size.width / TemplateEntry.figmaBaseWidth
+                    
+                    ForEach(template.guides) { guide in
+                        
+                        let centerFigmaX = guide.x + (guide.width / 2)
+                        let centerFigmaY = guide.y + (guide.width / 2)
+                        
+                        let finalX = centerFigmaX * figmaToPointScale
+                        let finalY = centerFigmaY * figmaToPointScale
+                        let finalWidth = guide.width * figmaToPointScale
+                        
+                        Circle()
+                            .stroke(Color.white, style: StrokeStyle(lineWidth: 2, dash: [8, 6]))
+                            .frame(width: finalWidth)
+                            .position(x: finalX, y: finalY)
+                    }
+                }
+                .aspectRatio(3.0 / 4.0, contentMode: .fit)
+                .allowsHitTesting(false)
+            }
+
+            // 3. UI CONTROLS LAYER
             VStack {
                 // --- TOP BAR ---
                 HStack {
-                    Button(action: {
-                        dismiss()
-                    }) {
+                    Button(action: { dismiss() }) {
                         Image(systemName: "chevron.left")
                             .font(.title2)
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
                             .padding(30)
                     }
-                    
                     Spacer()
-                    
-                    Button(action: {
-                    }) {
+                    Button(action: {}) {
                         Image(systemName: "questionmark")
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white)
@@ -49,9 +70,7 @@ struct OverlayView: View {
                 
                 // --- BOTTOM BAR ---
                 HStack {
-                    // Placeholder button untuk gallery preview
-                    Button(action: {
-                    }) {
+                    Button(action: {}) {
                         Image("testImage")
                             .resizable()
                             .scaledToFill()
@@ -72,10 +91,3 @@ struct OverlayView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//#Preview {
-//    ZStack {
-//        Color.gray.ignoresSafeArea()
-//        OverlayView(boxes:)
-//    }
-//}

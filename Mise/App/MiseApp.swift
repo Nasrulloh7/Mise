@@ -16,7 +16,7 @@ struct MiseApp: App {
                     Text("Placeholder for the TemplateView while testing OverlayView")
                         .font(.headline)
                     
-                    NavigationLink(destination: OverlayView()) {
+                    NavigationLink(destination: OverlayView(selectedTemplate: TemplateEntry.allTemplates.first(where: { $0.imageName == "RoT-01-02" }))) {
                         Text("Open Camera with Overlay")
                     }
                 }
