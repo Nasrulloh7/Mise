@@ -14,10 +14,12 @@ struct AIView: View {
     @State private var navigate = false
     @State private var boundingBoxes: [CGRect] = []
     
+    let image: UIImage
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                Image("testImage")
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
@@ -35,12 +37,12 @@ struct AIView: View {
                     Text("Analyzing...")
                         .foregroundStyle(.white)
                         .font(.headline)
-                    
-                    Button("Detect") {
-                        detectItem()
-                    }
                 }
             }
+            .onAppear() {
+                detectItem()
+            }
+            
             .navigationDestination(isPresented: $navigate) {
                 destinationView()
             }
@@ -57,8 +59,6 @@ struct AIView: View {
     }
     
     func detectItem() {
-        guard let image = UIImage(named: "testImage") else { return }
-        
         isProcessing = true
         
         ObjectDetection.detectObject(from: image) { count, boxes in
@@ -73,5 +73,5 @@ struct AIView: View {
 }
 
 #Preview {
-    AIView()
+    AIView(image: UIImage(systemName: "photo")!)
 }

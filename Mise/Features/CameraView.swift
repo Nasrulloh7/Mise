@@ -12,6 +12,7 @@ import AVKit
 struct CameraView: View {
     
     @StateObject private var camera = CameraManager()
+    @State private var aiNavigation: Bool = false
     
     private var flashIcon: String {
         switch camera.flashMode {
@@ -23,38 +24,52 @@ struct CameraView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            CameraPreview(session: camera.session, cameraManager: camera)
-                .aspectRatio(3.0 / 4.0, contentMode: .fit)
-                .frame(maxWidth: .infinity)
-                .clipped()
+        NavigationStack {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                CameraPreview(session: camera.session, cameraManager: camera)
+                    .aspectRatio(3.0 / 4.0, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                
+                VStack {
+                    Button {
+                        camera.toggleFlash()
+                    } label: {
+                        Image(systemName: flashIcon)
+                            .font(.title2)
+                            .foregroundStyle(.white)
+                            .padding()
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        camera.capturePhoto()
+                    }) {
+                        Circle()
+                            .strokeBorder(.white, lineWidth: 3)
+                            .frame(width: 70, height: 70)
+                            .overlay {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 60, height: 60)
+                            }
+                    }
+                    .padding(.bottom, 30)
+                }
+            }
             
-            VStack {
-                Button {
-                    camera.toggleFlash()
-                } label: {
-                    Image(systemName: flashIcon)
-                        .font(.title2)
-                        .foregroundStyle(.white)
-                        .padding()
+            .onChange(of: camera.capturedImage) { newImage in
+                if newImage != nil {
+                    aiNavigation = true
                 }
-                
-                Spacer()
-                
-                Button(action: {
-                    camera.capturePhoto()
-                }) {
-                    Circle()
-                        .strokeBorder(.white, lineWidth: 3)
-                        .frame(width: 70, height: 70)
-                        .overlay {
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 60, height: 60)
-                        }
+            }
+            
+            .navigationDestination(isPresented: $aiNavigation) {
+                if let image = camera.capturedImage {
+                    AIView(image: image.image)
                 }
-                .padding(.bottom, 30)
             }
         }
     }
