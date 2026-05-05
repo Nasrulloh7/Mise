@@ -9,13 +9,15 @@ import SwiftUI
 
 struct OverlayView: View {
     
+    let count: Int
     let boxes: [CGRect]
     
     var body: some View {
+        Text("Count: \(count)")
         Text("Boxes: \(boxes.count)")
     }
 }
 
 #Preview {
-    OverlayView(boxes: [])
+    OverlayView(count: 1, boxes: [])
 }

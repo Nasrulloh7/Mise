@@ -16,8 +16,8 @@ struct TemplateView: View {
     @State private var overviewEntries2 = SampleTemplates2.templates2
     
     var body: some View {
-        //        Text("\(count)")
-        //        OverlayView(boxes: boxes)
+        
+        OverlayView(count: count, boxes: boxes)
         
         VStack(spacing: 20) {
             Text("Select a Template").font(.largeTitle).bold()
@@ -38,6 +38,6 @@ struct TemplateView: View {
 }
 
 #Preview {
-    TemplateView(count: 1, boxes: [])
+    TemplateView(count: 0, boxes: [])
 
 }

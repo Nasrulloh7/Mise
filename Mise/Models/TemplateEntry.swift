@@ -17,7 +17,7 @@ enum SampleTemplates {
     static let templates: [TemplateEntry] = [
         TemplateEntry(
             title: "Rule of Thrids",
-            imageName: "image1",
+            imageName: "testImage1",
         ),
         TemplateEntry(
             title: "S-Curve",
@@ -34,11 +34,11 @@ enum SampleTemplates2 {
     static let templates2: [TemplateEntry] = [
         TemplateEntry(
             title: "Golden Triangle",
-            imageName: "image1",
+            imageName: "testImage1",
             
         ),TemplateEntry(
             title: "Diagonal",
-            imageName: "image1",
+            imageName: "testImage1",
         )
     ]
         
