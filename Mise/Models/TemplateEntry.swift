@@ -7,12 +7,41 @@
 
 import SwiftUI
 
-struct TemplateEntry: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct TemplateEntry: Identifiable {
+    let id: UUID = UUID()
+    let title: String
+    let imageName: String
 }
 
-#Preview {
-    TemplateEntry()
+enum SampleTemplates {
+    static let templates: [TemplateEntry] = [
+        TemplateEntry(
+            title: "Rule of Thrids",
+            imageName: "image1",
+        ),
+        TemplateEntry(
+            title: "S-Curve",
+            imageName: "testImage1",
+        ),
+        
+    ]
+        
+    
 }
+
+
+enum SampleTemplates2 {
+    static let templates2: [TemplateEntry] = [
+        TemplateEntry(
+            title: "Golden Triangle",
+            imageName: "image1",
+            
+        ),TemplateEntry(
+            title: "Diagonal",
+            imageName: "image1",
+        )
+    ]
+        
+    
+}
+

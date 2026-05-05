@@ -8,11 +8,41 @@
 import SwiftUI
 
 struct TemplateCard: View {
+    let entry: TemplateEntry
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottom) {
+                Image(entry.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width : 169, height: 225)
+                .clipped()
+            
+            HStack{
+                Text(entry.title)
+                    .font(.body)
+                Spacer()
+                Image(systemName: "info.circle")
+            }
+            .foregroundColor(.white)
+            .shadow(radius: 10)
+            .padding(12)
+            .frame(width: 169, height: 54, alignment: .leading)
+            .glassEffect(.clear, in: .rect())
+            .shadow(radius: 10)
+        }
+        .cornerRadius(15)
+
+        
+        
+        
     }
 }
 
+
 #Preview {
-    TemplateCard()
+    TemplateCard(entry: TemplateEntry(
+        title: "Rule of Thrids",
+        imageName: "image1",
+    ))
 }
