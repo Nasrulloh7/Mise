@@ -6,6 +6,62 @@
 //
 
 import SwiftUI
+import AVFoundation
+
+struct CameraInOverlay: View {
+    
+    @StateObject private var camera = CameraManager()
+    @State private var aiNavigation: Bool = false
+    
+    private var flashIcon: String {
+        switch camera.flashMode {
+        case .off: return "bolt.slash.fill"
+        case .on: return "bolt.fill"
+        case .auto: return "bolt.badge.automatic.fill"
+        @unknown default: return "bolt.slash.fill"
+        }
+    }
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                CameraPreview(session: camera.session, cameraManager: camera)
+                    .aspectRatio(3.0 / 4.0, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                
+                VStack {
+                    Button {
+                        camera.toggleFlash()
+                    } label: {
+                        Image(systemName: flashIcon)
+                            .font(.title2)
+                            .foregroundStyle(.white)
+                            .padding()
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        camera.capturePhoto()
+                    }) {
+                        Circle()
+                            .strokeBorder(.white, lineWidth: 3)
+                            .frame(width: 70, height: 70)
+                            .overlay {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 60, height: 60)
+                            }
+                    }
+                    .padding(.bottom, 30)
+                }
+            }
+        }
+    }
+}
+
 
 struct OverlayView: View {
     
@@ -15,7 +71,7 @@ struct OverlayView: View {
     var body: some View {
         ZStack {
             // 1. BASE LAYER: Camera feed
-            CameraView()
+            CameraInOverlay()
 
             // 2. TEMPLATE OUTLINES LAYER
             if let template = selectedTemplate {
@@ -92,6 +148,6 @@ struct OverlayView: View {
     }
 }
 
-#Preview {
-    OverlayView(count: 1, boxes: [])
-}
+//#Preview {
+//    OverlayView(count: 1, boxes: [])
+//}

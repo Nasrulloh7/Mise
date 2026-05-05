@@ -56,7 +56,7 @@ struct AIView: View {
     @ViewBuilder
     func destinationView() -> some View {
         if let count = detectedObject {
-            TemplateView(count: count, boxes: boundingBoxes)
+            TemplateView(count: count)
         } else {
             Text("No data")
         }
