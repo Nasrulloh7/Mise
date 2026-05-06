@@ -16,7 +16,6 @@ struct CameraInOverlay: View {
     @StateObject private var camera = CameraManager()
     @State private var aiNavigation: Bool = false
     
-    // 1. State variable to track the blink effect
     @State private var isBlinking: Bool = false
     
     private var flashIcon: String {
@@ -33,13 +32,13 @@ struct CameraInOverlay: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 
-                // Camera Feed Layer
+                // Camera feed Layer
                 CameraPreview(session: camera.session, cameraManager: camera)
                     .aspectRatio(3.0 / 4.0, contentMode: .fit)
                     .frame(maxWidth: .infinity)
                     .clipped()
                 
-                // 2. The Black Blink Layer (Sits right on top of the camera feed)
+                // Shutter blink layer, kalau pencet shutter button
                 Color.black
                     .opacity(isBlinking ? 1.0 : 0.0)
                     .ignoresSafeArea()
@@ -57,19 +56,18 @@ struct CameraInOverlay: View {
                     Spacer()
                     
                     Button(action: {
-                        // 3. Trigger the Blink Animation
+                        // Trigger the shutter blink
                         withAnimation(.easeIn(duration: 0.05)) {
                             isBlinking = true
                         }
                         
-                        // Immediately fade it back out after a split second
+                        // Fade it back out after 0.05 second
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                             withAnimation(.easeOut(duration: 0.05)) {
                                 isBlinking = false
                             }
                         }
                         
-                        // Tell the camera to capture the photo
                         camera.capturePhoto()
                         
                     }) {
@@ -99,7 +97,7 @@ struct OverlayView: View {
         ZStack {
             // 1. BASE LAYER: Camera feed
             CameraInOverlay()
-
+            
             // 2. TEMPLATE OUTLINES LAYER
             if let template = selectedTemplate {
                 GeometryReader { geometry in
@@ -124,7 +122,7 @@ struct OverlayView: View {
                 .aspectRatio(3.0 / 4.0, contentMode: .fit)
                 .allowsHitTesting(false)
             }
-
+            
             // 3. UI CONTROLS LAYER
             VStack {
                 // --- TOP BAR ---
@@ -153,7 +151,13 @@ struct OverlayView: View {
                 
                 // --- BOTTOM BAR ---
                 HStack {
-                    Button(action: {}) {
+                    Button(action: {
+                        // Source - https://stackoverflow.com/a/46475444
+                        // Posted by Jigar Thakkar
+                        // Retrieved 2026-05-06, License - CC BY-SA 3.0
+                        
+                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
+                    }) {
                         Image("testImage")
                             .resizable()
                             .scaledToFill()
@@ -174,7 +178,3 @@ struct OverlayView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//#Preview {
-//    OverlayView(count: 1, boxes: [])
-//}
