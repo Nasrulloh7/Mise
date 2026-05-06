@@ -8,9 +8,6 @@
 import SwiftUI
 import AVFoundation
 
-import SwiftUI
-import AVFoundation
-
 struct CameraInOverlay: View {
     
     @StateObject private var camera = CameraManager()
@@ -132,6 +129,9 @@ struct OverlayView: View {
                             .font(.title2)
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
+                            .frame(width: 50, height: 50)
+                            .background(Color.white.opacity(0.1))
+                            .clipShape(Circle())
                             .padding(30)
                     }
                     Spacer()
@@ -152,16 +152,13 @@ struct OverlayView: View {
                 // --- BOTTOM BAR ---
                 HStack {
                     Button(action: {
-                        // Source - https://stackoverflow.com/a/46475444
-                        // Posted by Jigar Thakkar
-                        // Retrieved 2026-05-06, License - CC BY-SA 3.0
-                        
                         UIApplication.shared.open(URL(string:"photos-redirect://")!)
                     }) {
-                        Image("testImage")
+                        Image(systemName: "photo.fill")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color.white)
+                            .frame(width: 55, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
@@ -177,4 +174,15 @@ struct OverlayView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
+}
+
+#Preview {
+    OverlayView(selectedTemplate: TemplateEntry(
+        title: "Diagonal",
+        imageName: "Dg-01-03",
+        objectCount: 3, guides:[
+        ObjectGuide(x: 444, y: -2, width: 615),
+        ObjectGuide(x: 553, y: 700, width: 403),
+        ObjectGuide(x: 261, y: 1040, width: 493)
+    ]))
 }
