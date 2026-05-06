@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Individual Object Guide
+// MARK: - Guide Positioning and Size
 struct ObjectGuide: Identifiable {
     let id = UUID()
     let x: CGFloat
@@ -24,10 +24,10 @@ struct TemplateEntry: Identifiable {
     let guides: [ObjectGuide]
 }
 
-// MARK: - The "JSON" Database
+// MARK: - Template Database
 extension TemplateEntry {
     
-    // The master size of your Figma Frame
+    // Ukuran template sesuai di Figma
     static let figmaBaseWidth: CGFloat = 1206.0
     static let figmaBaseHeight: CGFloat = 1608.0
     
