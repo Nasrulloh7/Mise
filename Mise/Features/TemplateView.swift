@@ -14,6 +14,7 @@ struct TemplateView: View {
     var availableTemplates: [TemplateEntry] {
         let safeCount = min(count, 3)
         return TemplateEntry.allTemplates.filter { $0.objectCount == safeCount }
+        
     }
     
     let columns = [
@@ -56,4 +57,8 @@ struct TemplateView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
     }
+}
+
+#Preview {
+    TemplateView(count: 3)
 }
